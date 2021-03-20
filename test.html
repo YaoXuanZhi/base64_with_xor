@@ -1,0 +1,22 @@
+<body class=\"text-center bg-light h-100\">
+
+    <form class=\"text-left mx-auto card p-4 w-100 p-2\" autocomplete=\"off\">
+        <h1 class=\"h3 mb-3 text-center\">请输入访问密码</h1>
+        <label for=\"password\">密码</label>
+        <input type=\"password\" id=\"password\" name=\"current-password\" autocomplete=\"current-password\" class=\"form-control rounded-right input-password\" spellcheck=\"false\" autocorrect=\"off\" autocapitalize=\"off\" required=\"\">
+        <button class=\"btn btn-lg btn-primary btn-block mt-3\" onclick=\"checkPassword()\">
+            验证
+        </button>
+</body>
+
+
+
+function base64_encode(){
+	var str=CryptoJS.enc.Utf8.parse($("#source").val());
+	var base64=CryptoJS.enc.Base64.stringify(str);
+	$("#result").val(base64);
+}
+function base64_decode(){
+	var words  = CryptoJS.enc.Base64.parse($("#result").val());
+	$("#source").val(words.toString(CryptoJS.enc.Utf8));
+}

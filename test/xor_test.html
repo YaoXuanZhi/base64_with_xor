@@ -1,0 +1,93 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <title>TODO++</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="http://cdn.bootstrapmb.com/bootstrap/4.4.0/css/bootstrap.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/js-base64@3.6.0/base64.min.js"></script>
+
+    <style>
+        form {
+            max-width: 330px;
+            margin-top: 17%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Doing List</h1>
+    <ul class='todos' style='margin: 10px 0;'>
+        <li class='todo' style='list-style-type: none;'> TODO++: </li>
+        <ul class='todos' style='margin: 10px 0;'>
+            <li class='todo' style='list-style-type: none;'> 飞机拉风 ✔ dddddddddddddddddddddd @started(19-12-08 16:51)
+            </li>
+            <ul class='todos' style='margin: 10px 0;'>
+            </ul>
+            <li class='todo' style='list-style-type: none;'> bbbbbb: </li>
+            <ul class='todos' style='margin: 10px 0;'>
+                <li class='todo' style='list-style-type: none;'> 奖励发放 ✔ cccccccccccccccccccccc @started(19-12-08 16:51)
+                </li>
+                <ul class='todos' style='margin: 10px 0;'>
+                </ul>
+            </ul>
+        </ul>
+    </ul>
+    <h1>Critical List</h1>
+    <ul class='todos' style='margin: 10px 0;'>
+    </ul>
+</body>
+
+<script type="text/javascript">
+
+    var Base64WithXOR = {
+        _keyStr: "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
+
+        encode: function (input) {
+            return Base64.encode(input);
+        },
+
+        decode: function (input) {
+            return Base64.decode(input);
+        },
+
+        encode_with_xor: function (input, key) {
+            var pwd = this.encode(key)
+            var xor_string = this._xor_handle(input, pwd);
+            return this.encode(xor_string);
+        },
+
+        decode_with_xor: function (input, key) {
+            var pwd = this.encode(key)
+            var decode_string = this.decode(input);
+            return this._xor_handle(decode_string, pwd);
+        },
+
+        _xor_handle: function (source, key) {
+            var result = "";
+            for (var i = 0; i < source.length; i++) {
+                var source_char = source.charCodeAt(i);
+                var key_idx = i % key.length;
+                var xor_char_code = key.charCodeAt(key_idx) ^ source_char;
+                result += String.fromCharCode(xor_char_code);
+            }
+            return result;
+        },
+    }
+
+    function checkPassword() {
+        var pwd = document.getElementById("password").value;
+        var encoded_content = document.getElementById("encoded_text").innerHTML;
+        var decoded_ele = Base64WithXOR.decode_with_xor(encoded_content, pwd);
+        if (decoded_ele.trim().startsWith('<') && decoded_ele.trim().endsWith('>')) {
+            document.getElementsByTagName("body")[0].innerHTML = decoded_ele;
+        } else {
+            alert("密码错误，请重新输入");
+        }
+    }
+
+</script>
+
+</html>
