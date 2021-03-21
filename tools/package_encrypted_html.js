@@ -2,14 +2,14 @@ const fs = require('fs');
 const base64_with_xor = require("../js/base64_with_xor");
 
 const argv = require('yargs')
-    .usage('Usage: build_encode_html -i path -o out_file -p pwd')
-    .example('build_encode_html -i "./test/template.html" -o "./encrypted_template.html -p admin"',
+    .usage('Usage: build_encrypted_html -i path -o out_file -p pwd')
+    .example('build_encrypted_html -i "./tools/template.html" -o "./encrypted_template.html -p admin"',
         'package html file to encrypted html file')
     .describe('i', 'input html path')
     .describe('o', 'input html path')
     .describe('p', 'input password')
     .default({p: 'admin'})
-    .demandOption(['i', 'o'])
+    .demandOption(['i', 'o', 'p'])
     .epilog('https://hub.fastgit.org/YaoXuanZhi/base64_with_xor.git copyright 2021')
     .argv;
 
@@ -25,7 +25,7 @@ function fetch_source_html_content(input) {
 
 // 将源文本加密后塞到加密验证页面上
 function package_encrypted_content(source_html, password) {
-  const encrypted_template_content = fs.readFileSync('./test/encrypted_template.html', 'utf8');
+  const encrypted_template_content = fs.readFileSync('./tools/encrypted_template.html', 'utf8');
   const encoded_content = base64_with_xor.encode_with_xor(source_html, password);
   const encoded_html_content = encrypted_template_content.replace("base64_text",  encoded_content);
   return encoded_html_content;

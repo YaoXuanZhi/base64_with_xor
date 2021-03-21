@@ -1,0 +1,26 @@
+{
+  "name": "base64_with_xor",
+  "version": "1.0.0",
+  "description": "如果你也有密钥访问需求，它将适合你",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "js-base64": "^3.6.0",
+    "yargs": "^16.2.0"
+  },
+  "devDependencies": {
+    "mocha": "^8.3.2"
+  },
+  "scripts": {
+    "test": "mocha"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://hub.fastgit.org/YaoXuanZhi/base64_with_xor"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

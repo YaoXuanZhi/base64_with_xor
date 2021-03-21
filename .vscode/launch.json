@@ -11,8 +11,8 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}\\test\\package_encrypted_html.js",
-            "args": ["-i", "./test/source.html",  "-o", "./test/out.html", "-p", "root"],
+            "program": "${workspaceFolder}\\tools\\package_encrypted_html.js",
+            "args": ["-i", "./tools/source.html",  "-o", "./tools/out.html", "-p", "root"],
             "outFiles": [
                 "${workspaceFolder}/**/*.js"
             ]
