@@ -29,7 +29,14 @@ console.log(encode_plus_str)
 console.log(decode_plus_str)
 ```
 
-详情请看`test.js`
+```sh
+# windows
+node ./tools/package_encrypted_html.js -i ./tools/source.html -o ./tools/out.html -p root
+start ./tools/out.html
+```
+
+操作演示：
+![option_record](/assets/option_record.gif)
 
 ## License
 
