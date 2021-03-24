@@ -23,15 +23,28 @@ describe('Base', function() {
   });
 });
 
-describe('Tool', function() {
-  describe('default', function() {
-    it('show help', function() {
+describe('Tool-html', function() {
+  describe('default-html', function() {
+    it('show help1', function() {
         exec('node ./tools/package_encrypted_html.js');
     });
   });
   describe('usage', function() {
     it('create out.html', function() {
-        exec('node ./tools/package_encrypted_html.js -i ./tools/source.html -o ./tools/out.html -p root');
+        exec('node ./tools/package_encrypted_html.js -i ./test/source.html -o ./test/out.html -p root');
+    });
+  });
+});
+
+describe('Tool-tag', function() {
+  describe('default-tag', function() {
+    it('show help2', function() {
+        exec('node ./tools/package_encrypted_tag.js');
+    });
+  });
+  describe('usage', function() {
+    it('create index_out.html', function() {
+        exec('node ./tools/package_encrypted_tag.js -i ./test/index.html -o ./test/index_out.html -p root');
     });
   });
 });
